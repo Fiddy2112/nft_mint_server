@@ -72,7 +72,7 @@ app.post("/upload", cors(), upload.single("file"), async (req, res) => {
   const ipfsImgData = await uploadImgOnIpfs();
   const ipfsMetadata = await uploadDataOnIpfs(ipfsImgData.cid);
   const mint = await mintNFT(RECEIVER_ADDRESS, ipfsMetadata.cid);
-  // console.log(ipfsImgData, ipfsMetadata);
+  console.log(mint);
   res.status(200).json({
     transactionHash: mint.transactionHash,
     cid: ipfsImgData.cid,
